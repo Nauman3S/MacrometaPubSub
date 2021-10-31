@@ -42,7 +42,8 @@ def getTempHumid():
     else:
         print("Failed to retrieve data from humidity sensor")
 
-for i in range(10):
+while 1:
+    
     
     data='{"MacAddress": '+getMACAddress() + ',"Temperature_Humidity": ' +getTempHumid()+'}'
     producer.send(json.dumps(data))
