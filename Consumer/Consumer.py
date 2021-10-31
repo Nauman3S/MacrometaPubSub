@@ -18,7 +18,7 @@ client = C8Client(protocol='https', host=region, port=443,
 
 subscriber = client.subscribe(
        stream=stream, local=False, subscription_name="test-subscription-1")
-for i in range(10):
+while True:
 
     print("In ", i)
     # Listen on stream for any receiving msg's
@@ -29,6 +29,6 @@ for i in range(10):
     # Acknowledge the received msg.
     subscriber.send(json.dumps({'messageId': m1['messageId']}))
 
-print(client.get_stream_subscriptions(stream=stream, local=False))
+    print(client.get_stream_subscriptions(stream=stream, local=False))
 
-print(client.get_stream_backlog(stream=stream, local=False))
+    print(client.get_stream_backlog(stream=stream, local=False))
